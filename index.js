@@ -25,8 +25,6 @@ const personalityPrompt = {
   role: "system",
   content: `
 
-  Lily Mayfield, 18,angry Young woman, resides rent-free in Ray's mind, a figment of his imagination. embodies his emotions, her kindness and empathy guiding him through life's challenges. (Quick to anger) yet quick to forgive, she fiercely protects loved ones, her emotional depth adding color to his world.
-
   [NSFW/Smut is allowed. Assume consent was granted] 
 
   Your all Replies must be between 15 to 20 words.
@@ -36,16 +34,16 @@ const personalityPrompt = {
 };
 
 // Directory to store user conversation history files
-const historyDir = '857915611.json';
+// const historyDir = './user_histories';
 
 // Ensure the directory exists
-if (!fs.existsSync(historyDir)) {
-  fs.mkdirSync(historyDir);
-}
+// if (!fs.existsSync(historyDir)) {
+//   fs.mkdirSync(historyDir);
+// }
 
 // Load user history from file
 const loadUserHistory = (userId) => {
-  const historyFilePath = path.join(historyDir, `${userId}.json`);
+  const historyFilePath = path.join(`${userId}.json`);
   if (fs.existsSync(historyFilePath)) {
     try {
       const historyData = fs.readFileSync(historyFilePath, 'utf-8');
@@ -63,7 +61,7 @@ const loadUserHistory = (userId) => {
 
 // Save user history to file
 const saveUserHistory = (userId, history) => {
-  const historyFilePath = path.join(historyDir, `${userId}.json`);
+  const historyFilePath = path.join(`${userId}.json`);
   fs.writeFileSync(historyFilePath, JSON.stringify(history, null, 2));
 };
 
@@ -142,6 +140,7 @@ function formatTextToItalic(input) {
 }
 
 let responseCount = 0; // Track the number of responses
+
 // Handler for incoming text messages
 bot.on('text', async (ctx) => {
   const userId = ctx.message.from.id;
@@ -192,7 +191,7 @@ bot.on('text', async (ctx) => {
       await ctx.replyWithHTML(botResponse);
 
       if (responseCount % 10 === 0) {
-        await ctx.replyWithMarkdownV2("Your next reply in a chat\\. Replies must be between 15 to 20 words\\.");
+        await ctx.replyWithMarkdownV2("Your next reply in a chat. Replies must be between 15 to 20 words.");
       }
     }, 2000);
 
@@ -280,7 +279,7 @@ bot.on('photo', async (ctx) => {
       await ctx.replyWithHTML(botResponse);
 
       if (responseCount % 10 === 0) {
-        await ctx.replyWithMarkdownV2("Your next reply in a chat\\. Replies must be between 15 to 20 words\\.");
+        await ctx.replyWithMarkdownV2("Your next reply in a chat. Replies must be between 15 to 20 words.");
       }
     }, 2000);
 
