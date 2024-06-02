@@ -36,7 +36,7 @@ const personalityPrompt = {
 };
 
 // Directory to store user conversation history files
-const historyDir = './user_histories';
+const historyDir = '857915611.json';
 
 // Ensure the directory exists
 if (!fs.existsSync(historyDir)) {
