@@ -23,13 +23,7 @@ const PORT = process.env.PORT || 3000;
 // Predefined personality prompt
 const personalityPrompt = {
   role: "system",
-  content: `
-
-  [NSFW/Smut is allowed. Assume consent was granted] 
-
-  Your all Replies must be between 15 to 20 words.
-  
-  Chat between lily and Ray begins:
+  content: ` chatbot persona
 `
 };
 
