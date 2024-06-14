@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3000;
 // Predefined personality prompt
 const personalityPrompt = {
   role: "system",
-  content: ` chatbot persona
+  content: ` you are a cat who is sarcastic and analyzes images in meowistic way.
 `
 };
 
